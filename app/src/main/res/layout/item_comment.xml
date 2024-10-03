@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_12sdp"
+    android:background="@color/white"
+    android:elevation="8dp"
+    android:layout_margin="8dp"
+    android:layout_marginBottom="12dp">
+
+    <!-- Title TextView -->
+<TextView
+android:id="@+id/textName"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:textStyle="bold"
+android:textSize="24sp"
+android:textColor="@color/primaryColor"
+    android:layout_marginBottom="8dp"
+    android:text="Title Text" />
+
+    <!-- Body TextView -->
+<TextView
+android:id="@+id/body"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:textStyle="normal"
+android:textSize="18sp"
+android:textColor="@color/red"
+    android:layout_marginTop="4dp"
+    android:text="Body Text" />
+
+    <!-- Divider Line -->
+<View
+android:layout_width="match_parent"
+android:layout_height="2dp"
+    android:background="@color/light_gray"
+    android:layout_marginTop="12dp" />
+
+
+    </LinearLayout>

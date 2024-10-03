@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/card_background"
+    android:elevation="6dp"
+    android:layout_margin="12dp"
+    android:layout_marginBottom="16dp">
+
+    <!-- Title TextView -->
+<TextView
+android:id="@+id/title"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:textStyle="bold"
+android:textSize="20sp"
+android:textColor="@color/black"
+android:layout_marginBottom="8dp"
+android:text="Title Text" />
+
+    <!-- Body TextView -->
+<TextView
+android:id="@+id/body"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:textStyle="normal"
+android:textSize="16sp"
+android:textColor="@color/errorColor"
+android:layout_marginTop="4dp"
+android:text="Body Text" />
+
+    <!-- Divider Line -->
+<View
+android:layout_width="match_parent"
+android:layout_height="1dp"
+android:background="@color/light_gray"
+android:layout_marginTop="12dp"
+android:layout_marginBottom="12dp" />
+
+    <!-- Optional Additional Details TextView -->
+<TextView
+android:id="@+id/additional_details"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:textStyle="italic"
+android:textSize="14sp"
+android:textColor="@color/dark_gray"
+android:layout_marginTop="4dp"
+android:text="Additional details can go here" />
+    </LinearLayout>

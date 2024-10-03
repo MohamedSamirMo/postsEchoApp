@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PostEcho</string>
+    <string name="back_button_description">Go Back"</string>
+</resources>
