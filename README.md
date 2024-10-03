@@ -16,6 +16,17 @@
 - **التخزين المحلي**: استخدام Room Database لتخزين البيانات مؤقتًا لزيادة سرعة الوصول.
 - **واجهة مستخدم أنيقة**: تصميم متجاوب يسهل على المستخدمين التنقل في التطبيق.
 
+## لقطات الشاشة
+
+### عرض المشاركات
+![WhatsApp Image 2024-10-03 at 6 34 15 PM (1)](https://github.com/user-attachments/assets/26663821-c75e-4ca3-b644-af71d72c166e)
+
+### عرض التعليقات
+![WhatsApp Image 2024-10-03 at 6 34 15 PM](https://github.com/user-attachments/assets/146a5d3c-1487-4a60-a463-4dfb0921902a)
+
+### واجهة المستخدم
+![WhatsApp Image 2024-10-03 at 6 34 14 PM](https://github.com/user-attachments/assets/8c1c5da5-a997-4147-bc84-d193cd94d41a)
+
 ## كيفية الإعداد
 
 1. **استنساخ المستودع**:
