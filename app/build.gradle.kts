@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("kapt")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 
 }
 
@@ -92,11 +94,20 @@ dependencies {
     val lifecycle_version = "2.8.5"
     val arch_version = "2.2.0"
 
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+
+    // Room KTX (for Kotlin Coroutines support)
+    implementation ("androidx.room:room-ktx:2.5.0")
     // ViewModel
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
 
     // LiveData
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    //dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.52")
+    kapt("com.google.dagger:hilt-android-compiler:2.52")
 }
 kapt{
     correctErrorTypes = true

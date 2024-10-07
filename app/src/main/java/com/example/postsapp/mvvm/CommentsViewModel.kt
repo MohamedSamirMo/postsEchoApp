@@ -2,23 +2,34 @@ package com.example.postsapp.mvvm
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.postsapp.models.CommentsModel
 import com.example.postsapp.repository.CommentRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CommentsViewModel : ViewModel() {
+@HiltViewModel
+class CommentsViewModel @Inject constructor( val  commentRepository:CommentRepository) : ViewModel() {
 
     private val _commentsLiveData = MutableLiveData<List<CommentsModel>>()
     val commentsLiveData get() = _commentsLiveData
     private val _errorLiveData = MutableLiveData<String>()
     val errorLiveData get() = _errorLiveData
-    private val commentRepository = CommentRepository()
+//    private val commentRepository = CommentRepository()
 
     fun getComment(postId: Int) {
-        commentRepository.getComment(postId, { commentsList ->
-            _commentsLiveData.value = commentsList
-        }, { error ->
-            _errorLiveData.value = error.localizedMessage
-        })
+        viewModelScope.launch(Dispatchers.IO) {
+            val data = commentRepository.getComment(postId)
+            _commentsLiveData.postValue(data)
+        }
+//        rxjava code
+//        commentRepository.getComment(postId, { commentsList ->
+//            _commentsLiveData.value = commentsList
+//        }, { error ->
+//            _errorLiveData.value = error.localizedMessage
+//        })
     }
 
     override fun onCleared() {

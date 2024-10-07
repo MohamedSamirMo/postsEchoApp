@@ -10,15 +10,21 @@ import io.reactivex.rxjava3.core.Single
 
 @Dao
 interface MyDao {
+    // Room Database with Coroutines
     @Insert
-    fun insertPost(list: List<PostModelX>) : Completable
+   suspend fun insertPost(list: List<PostModelX>)
 
     @Query("select * from PostModelX")
-    fun getAllPosts(): Single<List<PostModelX>>
+    suspend fun getAllPosts(): List<PostModelX>
 
     @Insert
-    fun insertComment(list: List<CommentsModel>): Completable
+   suspend fun insertComment(list: List<CommentsModel>)
 
+    @Insert
+   suspend fun insertComments(list: List<CommentsModel>)
+
+    @Query("select * from CommentsModel where postId=:postId")
+    suspend fun getCommentsByPostId(postId: Int): List<CommentsModel>
 
 
 
@@ -26,3 +32,21 @@ interface MyDao {
 
 
 }
+
+// Room Database with Rxjava
+//@Insert
+//fun insertPost(list: List<PostModelX>) : Completable
+//
+//@Query("select * from PostModelX")
+//fun getAllPosts(): Single<List<PostModelX>>
+//
+//@Insert
+//fun insertComment(list: List<CommentsModel>): Completable
+//
+//@Insert
+//fun insertComments(list: List<CommentsModel>): Completable
+//
+//@Query("select * from CommentsModel where postId=:postId")
+//fun getCommentsByPostId(postId: Int): Single<List<CommentsModel>>
+//
+

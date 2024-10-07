@@ -1,15 +1,13 @@
-package com.example.postsapp
+  package com.example.postsapp
 
 import android.app.Application
 import com.example.postsapp.roomdatabase.MyDatabase
-import com.example.postsapp.roomdatabase.MyDatabaseComment
+import dagger.hilt.android.HiltAndroidApp
 
-
+  @HiltAndroidApp
 class App: Application()  {
-    override fun onCreate() {
-        super.onCreate()
-
-//
+//    override fun onCreate() {
+        //
 //                // تفعيل StrictMode
 //                val policy = StrictMode.ThreadPolicy.Builder()
 //                    .detectAll() // اكتشاف جميع المشكلات الممكنة
@@ -26,9 +24,11 @@ class App: Application()  {
 
 
 
-        MyDatabase.init(this)
-        MyDatabaseComment.getDatabase(this)
-
-    }
+//        super.onCreate()
+//
+//
+//
+//        MyDatabase.init(this)
+//        MyDatabaseComment.getDatabase(this)}
 
 }

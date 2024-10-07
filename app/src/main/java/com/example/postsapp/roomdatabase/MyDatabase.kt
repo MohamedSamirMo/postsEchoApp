@@ -8,20 +8,22 @@ import com.example.postsapp.models.CommentsModel
 import com.example.postsapp.models.PostModelX
 
 
-@Database(entities = [PostModelX::class, CommentsModel::class], version = 1, exportSchema = false)
+@Database(entities = [PostModelX::class, CommentsModel::class], version = 2, exportSchema = false)
 abstract class MyDatabase: RoomDatabase()  {
     abstract fun getDao(): MyDao
-    companion object {
-        lateinit var myDatabase: MyDatabase
-        fun init(context: Context){
-            myDatabase =Room.databaseBuilder(context, MyDatabase::class.java
-                ,"myDatabase")
-//                .allowMainThreadQueries()
-                .fallbackToDestructiveMigration()
-                .build()
-        }
+
+
+    // before using dagger hilt with roomdb
+//    companion object {
+//        lateinit var myDatabase: MyDatabase
+//        fun init(context: Context){
+//            myDatabase =Room.databaseBuilder(context, MyDatabase::class.java
+//                ,"myDatabase")
+////                .allowMainThreadQueries()
+//                .fallbackToDestructiveMigration()
+//                .build()
+//        }}
 
     }
 
 
-}

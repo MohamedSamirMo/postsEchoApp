@@ -2,6 +2,7 @@ package com.example.postsapp
 
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.postsapp.adapter.CommentAdapter
@@ -9,7 +10,9 @@ import com.example.postsapp.databinding.ActivityCommentsBinding
 import com.example.postsapp.models.CommentsModel
 
 import com.example.postsapp.mvvm.CommentsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CommentsActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityCommentsBinding.inflate(layoutInflater)
@@ -17,9 +20,10 @@ class CommentsActivity : AppCompatActivity() {
     private val adapter: CommentAdapter by lazy {
         CommentAdapter()
     }
-    private val viewModel: CommentsViewModel by lazy {
-        ViewModelProvider(this)[CommentsViewModel::class.java]
-    }
+    val viewModel: CommentsViewModel by viewModels()
+//    private val viewModel: CommentsViewModel by lazy {
+//        ViewModelProvider(this)[CommentsViewModel::class.java]
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

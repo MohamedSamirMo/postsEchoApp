@@ -3,18 +3,25 @@ package com.example.postsapp.mvvm
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.room.Insert
 import com.example.postsapp.roomdatabase.MyDatabase
 import com.example.postsapp.models.PostModelX
-import com.example.postsapp.network.ConnectRetrofit
+
 import com.example.postsapp.repository.PostRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.CompletableObserver
 import io.reactivex.rxjava3.core.SingleObserver
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PostsViewModel: ViewModel()  {
+@HiltViewModel
+class PostsViewModel @Inject constructor(val postRepository: PostRepository  ): ViewModel ()  {
 
     private val compositeDisposable = CompositeDisposable()
     private val _postliveData = MutableLiveData<List<PostModelX>>()
@@ -23,19 +30,23 @@ class PostsViewModel: ViewModel()  {
     private val _errorLiveData = MutableLiveData<String>()
     val errorLiveData get() = _errorLiveData
 
-    private val postRepository = PostRepository()
+//    private val postRepository = PostRepository()
 
     init {
         getPost()
     }
 
     private fun getPost() {
-
-        postRepository.getPost({listPost->
-            _postliveData.value=listPost
-        },{error->
-            _errorLiveData.value=error.localizedMessage
-        })
+        viewModelScope.launch (Dispatchers.IO){
+            val data = postRepository.getPost()
+            _postliveData.postValue(data)
+        }
+// rxjava code
+//        postRepository.getPost({listPost->
+//            _postliveData.value=listPost
+//        },{error->
+//            _errorLiveData.value=error.localizedMessage
+//        })
     }
 
 

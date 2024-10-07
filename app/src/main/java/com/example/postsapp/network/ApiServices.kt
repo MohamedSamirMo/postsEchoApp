@@ -7,11 +7,19 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiServices {
+    // Retrofit with Coroutines
 @GET("posts")
-fun getPosts(): Single<List<PostModelX>>
+suspend fun getPosts(): List<PostModelX>
 
 
     @GET("comments")
-    fun getCommentsByPostId(@Query("postId") postId: Int): Single<List<CommentsModel>>
+   suspend fun getCommentsByPostId(@Query("postId") postId: Int): List<CommentsModel>
 
 }
+// Retrofit with Rxjava
+//@GET("posts")
+//fun getPosts(): Single<List<PostModelX>>
+//
+//
+//@GET("comments")
+//fun getCommentsByPostId(@Query("postId") postId: Int): Single<List<CommentsModel>>
